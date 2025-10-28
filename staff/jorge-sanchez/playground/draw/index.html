@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerdito Cuadrado Pequeño - Ojos Grandes</title>
+  <style>
+    body {
+      background-color: rgb(21, 51, 77);
+    }
+
+    /* face{} → cara cuadrada más pequeña */
+    .face {
+      width: 100px;
+      height: 100px;
+      background-color: #f9b3c2;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    /* lefteye{} → ojo izquierdo más grande */
+    .lefteye {
+      width: 22px;
+      height: 22px;
+      background-color: white;
+      position: absolute;
+      top: 28px;
+      left: 22px;
+    }
+
+    /* righteye{} → ojo derecho más grande */
+    .righteye {
+      width: 22px;
+      height: 22px;
+      background-color: white;
+      position: absolute;
+      top: 28px;
+      right: 22px;
+    }
+
+    /* eyepupil{} → pupila mirando hacia arriba a la izquierda */
+    .eyepupil {
+      width: 8px;
+      height: 8px;
+      background-color: black;
+      position: absolute;
+      top: 2px;   /* más arriba */
+      left: 2px;  /* más a la izquierda */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="face">
+    <div class="lefteye">
+      <div class="eyepupil"></div>
+    </div>
+
+    <div class="righteye">
+      <div class="eyepupil"></div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
