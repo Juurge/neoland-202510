@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cerdito Cuadrado Pequeño - Ojos Grandes</title>
+  <title>Cerdito</title>
   <style>
     body {
       background-color: rgb(21, 51, 77);
     }
 
-    /* face{} → cara cuadrada más pequeña */
-    .face {
+    /* Cara */
+    #face {
       width: 100px;
       height: 100px;
       background-color: #f9b3c2;
@@ -19,46 +19,147 @@
       left: 20px;
     }
 
-    /* lefteye{} → ojo izquierdo más grande */
-    .lefteye {
-      width: 22px;
-      height: 22px;
+    /* Ojos */
+    #lefteye, #righteye {
+      width: 28px;
+      height: 28px;
       background-color: white;
       position: absolute;
-      top: 28px;
-      left: 22px;
+      top: 25px;
     }
+    #lefteye { left: 15px; }
+    #righteye { right: 15px; }
 
-    /* righteye{} → ojo derecho más grande */
-    .righteye {
-      width: 22px;
-      height: 22px;
-      background-color: white;
-      position: absolute;
-      top: 28px;
-      right: 22px;
-    }
-
-    /* eyepupil{} → pupila mirando hacia arriba a la izquierda */
-    .eyepupil {
-      width: 8px;
-      height: 8px;
+    #eyepupil {
+      width: 10px;
+      height: 10px;
       background-color: black;
       position: absolute;
-      top: 2px;   /* más arriba */
-      left: 2px;  /* más a la izquierda */
+      top: 2px;
+      left: 2px;
     }
+
+    /* Nariz */
+    #nose {
+      width: 40px;
+      height: 20px;
+      background-color: #f48ca1;
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+    }
+
+    #nostril-left {
+      width: 6px;
+      height: 6px;
+      background-color: black;
+      position: absolute;
+      top: 6px;
+      left: 8px;
+    }
+
+    #nostril-right {
+      width: 6px;
+      height: 6px;
+      background-color: black;
+      position: absolute;
+      top: 6px;
+      right: 8px;
+    }
+
+    /* Casa */
+    #house {
+      position: absolute;
+      top: 20px;
+      left: 160px;
+      width: 100px;
+      height: 100px;
+    }
+
+    /* Chimenea detrás del tejado */
+    #chimney {
+      width: 15px;
+      height: 50px;           /* altura de la chimenea */
+      background-color: #8b0000;
+      position: absolute;
+      top: -10px;              /* sobresale por encima del tejado */
+      left: 60px;              /* posición horizontal */
+      border: 1px solid #5a0000;
+      z-index: 0;              /* detrás del tejado */
+    }
+
+    /* Tejado triangular */
+    #roof {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 40px solid #a35d32;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;              /* delante de la chimenea */
+    }
+
+    /* Paredes */
+    #walls {
+      width: 100px;
+      height: 60px;
+      background-color: #e0b084;
+      position: absolute;
+      top: 40px;
+    }
+
+    /* Puerta */
+    #door {
+      width: 25px;
+      height: 35px;
+      background-color: #5b3a1a;
+      position: absolute;
+      bottom: 0;
+      left: 38px;
+    }
+
+    /* Ventanas */
+    #windowleft, #windowright {
+      width: 20px;
+      height: 20px;
+      background-color: #87ceeb;
+      border: 2px solid #4a4a4a;
+      position: absolute;
+      top: 50px;
+    }
+
+    #windowleft { left: 10px; }
+    #windowright { right: 10px; }
+
   </style>
 </head>
 <body>
 
-  <div class="face">
-    <div class="lefteye">
-      <div class="eyepupil"></div>
+  <!-- Casa -->
+  <div id="house">
+    <div id="chimney"></div> <!-- chimenea detrás del tejado -->
+    <div id="roof"></div>
+    <div id="walls"></div>
+    <div id="door"></div>
+    <div id="windowleft"></div>
+    <div id="windowright"></div>
+  </div>
+
+  <!-- Cerdito -->
+  <div id="face">
+    <div id="lefteye">
+      <div id="eyepupil"></div>
     </div>
 
-    <div class="righteye">
-      <div class="eyepupil"></div>
+    <div id="righteye">
+      <div id="eyepupil"></div>
+    </div>
+
+    <div id="nose">
+      <div id="nostril-left"></div>
+      <div id="nostril-right"></div>
     </div>
   </div>
 
