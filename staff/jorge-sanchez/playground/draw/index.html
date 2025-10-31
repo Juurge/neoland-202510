@@ -36,8 +36,15 @@
     .h-10 { height: 10px; }
     .w-6 { width: 6px; }
     .h-6 { height: 6px; }
-    .w-12 { width: 12px; } /* Pupilas más grandes */
+    .w-12 { width: 12px; } 
     .h-12 { height: 12px; }
+    .w-60 { width: 60px; }
+    .h-100 { height: 100px; }
+    .h-250 { height: 250px; }
+    .h-80 { height: 80px; }
+    .h-60 { height: 60px; }
+    .w-20 { width: 20px; }
+    .h-70 { height: 70px; }
 
     /* Flex helpers para centrar */
     .flex { display: flex; }
@@ -49,93 +56,6 @@
       margin: 0;
       padding: 0;
     }
-
-    /* === Marciano === */
-    .alien {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 200px;
-      height: 350px;
-      transform: scale(0.65);
-      transform-origin: top right;
-    }
-
-    .alien-head {
-      width: 100%;
-      height: 250px;
-      background-color: #4CAF50;
-      border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
-      position: relative;
-    }
-
-    .alien-eye {
-      width: 50px;
-      height: 70px;
-      background-color: white;
-      border-radius: 50%;
-      position: absolute;
-      top: 60px;
-    }
-
-    .alien-eye.left { left: 30px; transform: rotate(-15deg); }
-    .alien-eye.right { right: 30px; transform: rotate(15deg); }
-
-    .alien-pupil {
-      width: 20px;
-      height: 30px;
-      background-color: black;
-      border-radius: 50%;
-      position: absolute;
-      top: 20px;
-      left: 15px;
-    }
-
-    .alien-mouth {
-      width: 80px;
-      height: 20px;
-      background-color: black;
-      border-radius: 0 0 40px 40px;
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .alien-body {
-      width: 60px;
-      height: 100px;
-      background-color: #4CAF50;
-      border-radius: 30px / 50px;
-      position: absolute;
-      top: 250px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .alien-arm {
-      width: 20px;
-      height: 80px;
-      background-color: #4CAF50;
-      border-radius: 10px;
-      position: absolute;
-      top: 250px;
-    }
-
-    .alien-arm.left { left: calc(50% - 40px); }
-    .alien-arm.right { left: calc(50% + 20px); }
-
-    .alien-leg {
-      width: 20px;
-      height: 60px;
-      background-color: #4CAF50;
-      border-radius: 10px;
-      position: absolute;
-      top: 350px;
-    }
-
-    .alien-leg.left { left: calc(50% - 20px); }
-    .alien-leg.right { left: calc(50%); }
   </style>
 </head>
 <body>
@@ -165,35 +85,36 @@
 
   <!-- 🏠 Casa convertida a utilitarias -->
   <div class="abs" style="top:20px; left:400px; width:100px; height:100px;">
-    <!-- Chimenea -->
     <div class="abs bg-chimney" style="width:15px; height:50px; border:1px solid #5a0000; top:-10px; left:60px; z-index:0;"></div>
-
-    <!-- Tejado -->
     <div class="abs" style="width:0; height:0; border-left:50px solid transparent; border-right:50px solid transparent; border-bottom:40px solid #a35d32; top:0; left:0; z-index:1;"></div>
-
-    <!-- Paredes -->
     <div class="abs bg-lightbrown" style="top:40px; width:100px; height:60px;"></div>
-
-    <!-- Puerta -->
     <div class="abs bg-brown" style="bottom:0; left:38px; width:25px; height:35px;"></div>
-
-    <!-- Ventanas -->
     <div class="abs bg-blue" style="top:50px; left:10px; width:20px; height:20px; border:2px solid #4a4a4a;"></div>
     <div class="abs bg-blue" style="top:50px; right:10px; width:20px; height:20px; border:2px solid #4a4a4a;"></div>
   </div>
 
-  <!-- 👽 Marciano intacto -->
-  <div class="alien">
-    <div class="alien-head">
-      <div class="alien-eye left"><div class="alien-pupil"></div></div>
-      <div class="alien-eye right"><div class="alien-pupil"></div></div>
-      <div class="alien-mouth"></div>
+  <!-- 👽 Marciano convertido a utilitarias -->
+  <div class="abs" style="top:20px; right:20px; width:200px; height:350px; transform:scale(0.65); transform-origin:top right;">
+    <!-- Cabeza -->
+    <div class="abs bg-green" style="width:100%; height:250px; border-radius:50% 50% 40% 40% / 60% 60% 40% 40%; position:relative;">
+      <!-- Ojos -->
+      <div class="abs bg-white rounded-full" style="width:50px; height:70px; top:60px; left:30px; transform:rotate(-15deg);">
+        <div class="abs bg-black rounded-full" style="width:20px; height:30px; top:20px; left:15px;"></div>
+      </div>
+      <div class="abs bg-white rounded-full" style="width:50px; height:70px; top:60px; right:30px; transform:rotate(15deg);">
+        <div class="abs bg-black rounded-full" style="width:20px; height:30px; top:20px; left:15px;"></div>
+      </div>
+      <!-- Boca -->
+      <div class="abs bg-black" style="width:80px; height:20px; border-radius:0 0 40px 40px; bottom:40px; left:50%; transform:translateX(-50%);"></div>
     </div>
-    <div class="alien-body"></div>
-    <div class="alien-arm left"></div>
-    <div class="alien-arm right"></div>
-    <div class="alien-leg left"></div>
-    <div class="alien-leg right"></div>
+    <!-- Cuerpo -->
+    <div class="abs bg-green rounded-full" style="width:60px; height:100px; border-radius:30px / 50px; top:250px; left:50%; transform:translateX(-50%);"></div>
+    <!-- Brazos -->
+    <div class="abs bg-green rounded-half" style="width:20px; height:80px; top:250px; left:calc(50% - 40px);"></div>
+    <div class="abs bg-green rounded-half" style="width:20px; height:80px; top:250px; left:calc(50% + 20px);"></div>
+    <!-- Piernas -->
+    <div class="abs bg-green rounded-half" style="width:20px; height:60px; top:350px; left:calc(50% - 20px);"></div>
+    <div class="abs bg-green rounded-half" style="width:20px; height:60px; top:350px; left:50%;"></div>
   </div>
 </body>
 </html>
