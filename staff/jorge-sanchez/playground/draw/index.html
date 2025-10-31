@@ -1,95 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cerdito</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cerdito, Casa y Marciano</title>
   <style>
+    /* === Utility Classes === */
+    .abs { position: absolute; }
+    .rel { position: relative; }
+    .rounded-full { border-radius: 50%; }
+    .rounded-oval { border-radius: 30px / 50px; }
+    .center-x { left: 50%; transform: translateX(-50%); }
+
+    .bg-blue { background-color: #87ceeb; }
+    .bg-pink { background-color: #f9b3c2; }
+    .bg-darkpink { background-color: #f48ca1; }
+    .bg-green { background-color: #4CAF50; }
+    .bg-brown { background-color: #5b3a1a; }
+    .bg-lightbrown { background-color: #e0b084; }
+    .bg-chimney { background-color: #8b0000; }
+    .bg-white { background-color: white; }
+    .bg-black { background-color: black; }
+
+    .border { border: 2px solid #4a4a4a; }
+
+    .top-20 { top: 20px; }
+    .left-20 { left: 20px; }
+    .left-400 { left: 400px; }
+    .right-20 { right: 20px; }
+
+    .w-100 { width: 100px; }
+    .h-100 { height: 100px; }
+
     body {
       background-color: rgb(21, 51, 77);
+      margin: 0;
+      padding: 0;
     }
 
-    /* Cara */
-    #face {
-      width: 100px;
-      height: 100px;
-      background-color: #f9b3c2;
+    /* === Casa === */
+    .house {
       position: absolute;
       top: 20px;
-      left: 20px;
-    }
-
-    /* Ojos */
-    #lefteye, #righteye {
-      width: 28px;
-      height: 28px;
-      background-color: white;
-      position: absolute;
-      top: 25px;
-    }
-    #lefteye { left: 15px; }
-    #righteye { right: 15px; }
-
-    #eyepupil {
-      width: 10px;
-      height: 10px;
-      background-color: black;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-    }
-
-    /* Nariz */
-    #nose {
-      width: 40px;
-      height: 20px;
-      background-color: #f48ca1;
-      position: absolute;
-      bottom: 20px;
-      left: 30px;
-    }
-
-    #nostril-left {
-      width: 6px;
-      height: 6px;
-      background-color: black;
-      position: absolute;
-      top: 6px;
-      left: 8px;
-    }
-
-    #nostril-right {
-      width: 6px;
-      height: 6px;
-      background-color: black;
-      position: absolute;
-      top: 6px;
-      right: 8px;
-    }
-
-    /* Casa */
-    #house {
-      position: absolute;
-      top: 20px;
-      left: 160px;
+      left: 400px;
       width: 100px;
       height: 100px;
     }
 
-    /* Chimenea detrás del tejado */
-    #chimney {
+    .chimney {
       width: 15px;
-      height: 50px;           /* altura de la chimenea */
+      height: 50px;
       background-color: #8b0000;
-      position: absolute;
-      top: -10px;              /* sobresale por encima del tejado */
-      left: 60px;              /* posición horizontal */
       border: 1px solid #5a0000;
-      z-index: 0;              /* detrás del tejado */
+      position: absolute;
+      top: -10px;
+      left: 60px;
+      z-index: 0;
     }
 
-    /* Tejado triangular */
-    #roof {
+    .roof {
       width: 0;
       height: 0;
       border-left: 50px solid transparent;
@@ -98,11 +67,10 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1;              /* delante de la chimenea */
+      z-index: 1;
     }
 
-    /* Paredes */
-    #walls {
+    .walls {
       width: 100px;
       height: 60px;
       background-color: #e0b084;
@@ -110,8 +78,7 @@
       top: 40px;
     }
 
-    /* Puerta */
-    #door {
+    .door {
       width: 25px;
       height: 35px;
       background-color: #5b3a1a;
@@ -120,8 +87,7 @@
       left: 38px;
     }
 
-    /* Ventanas */
-    #windowleft, #windowright {
+    .window {
       width: 20px;
       height: 20px;
       background-color: #87ceeb;
@@ -130,40 +96,225 @@
       top: 50px;
     }
 
-    #windowleft { left: 10px; }
-    #windowright { right: 10px; }
+    .window.left { left: 10px; }
+    .window.right { right: 10px; }
 
+    /* === Cerdito === */
+    .pig-face {
+      width: 100px;
+      height: 100px;
+      background-color: #f9b3c2;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    /* Orejas */
+    .ear {
+      width: 25px;
+      height: 25px;
+      background-color: #f9b3c2;
+      position: absolute;
+      top: -15px;
+    }
+    .ear.left { left: 0; }
+    .ear.right { right: 0; }
+
+    /* Ojos */
+    .eye {
+      width: 28px;
+      height: 28px;
+      background-color: white;
+      position: absolute;
+      top: 25px;
+      border-radius: 50%;
+    }
+
+    .eye.left { left: 15px; }
+    .eye.right { right: 15px; }
+
+    .pupil {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      border-radius: 50%;
+    }
+
+    /* Nariz */
+    .nose {
+      width: 40px;
+      height: 20px;
+      background-color: #f48ca1;
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      border-radius: 20px;
+    }
+
+    .nostril {
+      width: 6px;
+      height: 6px;
+      background-color: black;
+      position: absolute;
+      top: 6px;
+      border-radius: 50%;
+    }
+
+    .nostril.left { left: 8px; }
+    .nostril.right { right: 8px; }
+
+    /* Boca */
+    .pig-mouth {
+      width: 50px;
+      height: 10px;
+      background-color: #b44a62;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* === Marciano === */
+    .alien {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 200px;
+      height: 350px;
+      transform: scale(0.65);
+      transform-origin: top right;
+    }
+
+    .alien-head {
+      width: 100%;
+      height: 250px;
+      background-color: #4CAF50;
+      border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+      position: relative;
+    }
+
+    .alien-eye {
+      width: 50px;
+      height: 70px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 60px;
+    }
+
+    .alien-eye.left { left: 30px; transform: rotate(-15deg); }
+    .alien-eye.right { right: 30px; transform: rotate(15deg); }
+
+    .alien-pupil {
+      width: 20px;
+      height: 30px;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 15px;
+    }
+
+    .alien-mouth {
+      width: 80px;
+      height: 20px;
+      background-color: black;
+      border-radius: 0 0 40px 40px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .alien-body {
+      width: 60px;
+      height: 100px;
+      background-color: #4CAF50;
+      border-radius: 30px / 50px;
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .alien-arm {
+      width: 20px;
+      height: 80px;
+      background-color: #4CAF50;
+      border-radius: 10px;
+      position: absolute;
+      top: 250px;
+    }
+
+    .alien-arm.left { left: calc(50% - 40px); }
+    .alien-arm.right { left: calc(50% + 20px); }
+
+    .alien-leg {
+      width: 20px;
+      height: 60px;
+      background-color: #4CAF50;
+      border-radius: 10px;
+      position: absolute;
+      top: 350px;
+    }
+
+    .alien-leg.left { left: calc(50% - 20px); }
+    .alien-leg.right { left: calc(50%); }
   </style>
 </head>
+
 <body>
+  <!-- 🐷 Cerdito -->
+  <div class="pig-face">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
 
-  <!-- Casa -->
-  <div id="house">
-    <div id="chimney"></div> <!-- chimenea detrás del tejado -->
-    <div id="roof"></div>
-    <div id="walls"></div>
-    <div id="door"></div>
-    <div id="windowleft"></div>
-    <div id="windowright"></div>
+    <div class="eye left">
+      <div class="pupil"></div>
+    </div>
+    <div class="eye right">
+      <div class="pupil"></div>
+    </div>
+
+    <div class="nose">
+      <div class="nostril left"></div>
+      <div class="nostril right"></div>
+    </div>
+
+    <div class="pig-mouth"></div>
   </div>
 
-  <!-- Cerdito -->
-  <div id="face">
-    <div id="lefteye">
-      <div id="eyepupil"></div>
-    </div>
-
-    <div id="righteye">
-      <div id="eyepupil"></div>
-    </div>
-
-    <div id="nose">
-      <div id="nostril-left"></div>
-      <div id="nostril-right"></div>
-    </div>
+  <!-- 🏠 Casa -->
+  <div class="house">
+    <div class="chimney"></div>
+    <div class="roof"></div>
+    <div class="walls"></div>
+    <div class="door"></div>
+    <div class="window left"></div>
+    <div class="window right"></div>
   </div>
 
+  <!-- 👽 Marciano -->
+  <div class="alien">
+    <div class="alien-head">
+      <div class="alien-eye left"><div class="alien-pupil"></div></div>
+      <div class="alien-eye right"><div class="alien-pupil"></div></div>
+      <div class="alien-mouth"></div>
+    </div>
+    <div class="alien-body"></div>
+    <div class="alien-arm left"></div>
+    <div class="alien-arm right"></div>
+    <div class="alien-leg left"></div>
+    <div class="alien-leg right"></div>
+  </div>
 </body>
 </html>
+
 
 
