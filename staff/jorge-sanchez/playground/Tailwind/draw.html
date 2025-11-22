@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vaca Lola</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-white p-6 rounded-xl shadow-lg">
+    <h1 class="text-xl font-semibold text-center mb-4"> La Vaca Lola </h1>
+
+    <!-- FONDO -->
+    <svg id="vacaLola" width="400" height="400" class="border rounded-lg bg-sky-50">
+
+      <!-- FONDO BLANCO -->
+      <rect x="0" y="0" width="400" height="400" fill="white" />
+
+      <!-- CABEZA PRINCIPAL -->
+      <rect id="cabeza" x="100" y="80" width="200" height="180" rx="40" ry="40"
+            fill="white" stroke="black" stroke-width="2" />
+
+      <!-- OREJAS -->
+      <!-- Oreja izquierda -->
+      <polygon id="orejaIzquierda" points="100,90 60,40 100,60"
+               fill="white" stroke="black" stroke-width="2" />
+      <!-- Oreja derecha -->
+      <polygon id="orejaDerecha" points="300,90 340,40 300,60"
+               fill="white" stroke="black" stroke-width="2" />
+
+      <!-- MANCHAS NEGRAS -->
+      <circle id="mancha1" cx="150" cy="120" r="25" fill="black" />
+      <circle id="mancha2" cx="240" cy="150" r="35" fill="black" />
+
+      <!-- HOCICO ROSA -->
+      <rect id="hocico" x="140" y="200" width="120" height="70" rx="20" ry="20"
+            fill="#ffb6c1" stroke="black" stroke-width="2" />
+
+      <!-- FOSAS NASALES -->
+      <circle id="fosa1" cx="170" cy="235" r="6" fill="#a05252" />
+      <circle id="fosa2" cx="230" cy="235" r="6" fill="#a05252" />
+
+      <!-- OJOS -->
+      <!-- Ojo izquierdo -->
+      <circle id="ojoIzquierdo" cx="160" cy="150" r="15"
+              fill="white" stroke="black" stroke-width="2" />
+      <!-- Ojo derecho -->
+      <circle id="ojoDerecho" cx="240" cy="150" r="15"
+              fill="white" stroke="black" stroke-width="2" />
+
+      <!-- Pupilas -->
+      <circle id="pupilaIzquierda" cx="160" cy="150" r="6" fill="black" />
+      <circle id="pupilaDerecha" cx="240" cy="150" r="6" fill="black" />
+
+    </svg>
+  </div>
+
+  <script>
+    
+
+    // Cambiar color de la cabeza al hacer clic
+    const cabeza = document.getElementById('cabeza');
+    cabeza.addEventListener('click', () => {
+      cabeza.setAttribute('fill', cabeza.getAttribute('fill') === 'white' ? '#fef08a' : 'white');
+    });
+
+    // Mover las pupilas al pasar el ratón sobre los ojos
+    const pupilaIzquierda = document.getElementById('pupilaIzquierda');
+    const pupilaDerecha = document.getElementById('pupilaDerecha');
+
+    document.getElementById('vacaLola').addEventListener('mousemove', (e) => {
+      const rect = e.target.closest('svg').getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Movimiento limitado de pupilas
+      const moveX = Math.min(Math.max(x - 200, -10), 10);
+      const moveY = Math.min(Math.max(y - 150, -10), 10);
+
+      pupilaIzquierda.setAttribute('cx', 160 + moveX / 10);
+      pupilaIzquierda.setAttribute('cy', 150 + moveY / 10);
+      pupilaDerecha.setAttribute('cx', 240 + moveX / 10);
+      pupilaDerecha.setAttribute('cy', 150 + moveY / 10);
+    });
+  </script>
+</body>
+</html>

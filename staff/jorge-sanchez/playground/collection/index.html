@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function Collection() {
+            this.count = 0
+        }
+
+        Collection.prototype.add = function (item) {
+            this[this.count] = item
+            this.count++
+        }
+
+        Collection.prototype.remove = function (item) {
+            for (var i = 0; i < this.count; i++)
+                if (this[i] === item)
+                    delete this[i]
+        }
+        Collection.prototype.removeFirst = function (item) {
+            for (var i = 0; i < this.count; i++)
+                if (this[i] === item) {
+                    delete this[i]
+
+                    return
+                }
+        }
+
+
+        Collection.prototype.update = function (target, replacement) {
+            for (var i = 0; i < this.count; i++)
+                if (this[i] === target)
+                    this[i] = replacement
+        }
+
+        Collection.prototype.updateFirst = function (target, replacement) {
+            for (var i = 0; i < this.count; i++)
+                if (this[i] === target) {
+                    this[i] = replacement
+
+                    return
+                }
+        }
+
+        Collection.prototype.push = function (item) {
+            this[this.count] = item
+            this.count++
+
+            return this.count
+        }
+
+        Collection.prototype.pop = function () {
+            const lastItem = this[this.count - 1]
+            delete this[this.count - 1]
+            this.count--
+
+            return lastItem
+        }
+        Collection.prototype.shift = function () {
+            const first = this[0];
+            for (let i = 1; i < this.count; i++) {
+                this[i - 1] = this[i];
+            }
+
+            this.count--;
+            delete this[this.count]
+
+            return first;
+        }
+
+        Collection.prototype.sort = function () {
+            // Bucle externo: controla cuántas veces se repite el proceso de ordenar
+            for (let i = 0; i < this.count - 1; i++) {
+                // Bucle interno: recorre los elementos de la Collection
+                for (let j = 0; j < this.count - 1 - i; j++) {
+                    // Compara el elemento actual con el siguiente
+                    if (this[j] > this[j + 1]) {
+                        // Si el actual es mayor que el siguiente, los intercambiamos y el mayor
+                        // va al final
+                        const temp = this[j]; // Guardamos temporalmente el elemento actual
+                        this[j] = this[j + 1]; // Movemos el elemento siguiente a la posición actual
+                        this[j + 1] = temp; // Colocamos el elemento actual en la posición siguiente
+                    }
+                }
+            }
+            // Devolvemos la propia colección 
+            return this;
+        };
+
+        const colors = new Collection()
+        colors.add('red')
+        colors.add('green')
+        colors.add('blue')
+
+        const nums = new Collection()
+        nums.add(3.141516) // PI
+        nums.add(666) // (..)
+        nums.add(2000)
+
+        const names = new Collection()
+        names.add('Juan')
+        names.add('Sergio')
+        names.add('Laura')
+        names.add('Albert')
+        names.add('Sergio')
+
+        const dancers = new Collection()
+        dancers.add(3)
+        dancers.add(0)
+        dancers.add(1)
+        dancers.add(8)
+        dancers.add(7)
+        dancers.add(2)
+        dancers.add(5)
+        dancers.add(4)
+        dancers.add(6)
+        dancers.add(9)
+       
+        
+        
+    </script>
+</body>
+
+</html>
