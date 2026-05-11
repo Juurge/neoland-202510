@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "dev": "cd app && npm run dev",
+    "test": "mocha api/**/*.spec.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "com": "file:com",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.6.1"
+  },
+  "devDependencies": {
+    "chai": "^5.2.1",
+    "mocha": "^11.7.4"
+  }
+}
